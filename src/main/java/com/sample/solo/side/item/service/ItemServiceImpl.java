@@ -10,17 +10,23 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class BaseItemService implements ItemService{
+public class ItemServiceImpl implements ItemService{
 
     private final ItemRepository itemRepository;
 
     @Override
     public List<ItemDTO> findAll() {
-        return itemRepository.findAll().stream().map(Item::toDto).toList();
+        return itemRepository.findAll()
+                                .stream()
+                                .map(Item::toDto)
+                                .toList();
     }
 
     @Override
     public List<ItemDTO> findAll(List<Integer> ids) {
-        return itemRepository.findAllByIdIn(ids).stream().map(Item::toDto).toList();
+        return itemRepository.findAllByIdIn(ids)
+                                .stream()
+                                .map(Item::toDto)
+                                .toList();
     }
 }
